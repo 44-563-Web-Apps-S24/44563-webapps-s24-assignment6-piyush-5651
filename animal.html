@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>Animal Game</title>
+
+<body>
+    <h1>Animal game by Piyush Jain</h1>
+
+    <form>
+        <label for="Hidden Animal">The hidden animal type </label>
+        <input type="password" id="form1_HiddenAnimal" value="Chicken"> <br>
+
+        <label for="Guess Animal">Guess the animal</label>
+        <input type="text" id="form1_GuessAnimal" autofocus> <br>
+
+        <input type="button" onclick="checkAnimal()" value="Check the guess">
+    </form>
+
+
+    <p id="result">Your result </p>
+
+    <script>
+        let wrong = 0;
+        let correct = 0;
+
+        function checkAnimal() {
+            const secretAnimal = document.getElementById("form1_HiddenAnimal").value;
+            const guessAnimal = document.getElementById("form1_GuessAnimal").value;
+
+            if (secretAnimal === guessAnimal) {
+                correct++;
+                alert("Ruff ruff");
+            } else {
+                wrong++;
+                alert("Grrrr");
+            }
+
+            document.getElementById("result").innerHTML = `Correct guesses: ${correct}, Wrong guesses: ${wrong}`;
+        }
+    </script>
+
+</body>
+
+</html>
