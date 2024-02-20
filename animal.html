@@ -6,11 +6,11 @@
     <h1>Animal game by Piyush Jain</h1>
 
     <form>
-        <label for="Hidden Animal">The hidden animal type </label>
-        <input type="password" id="form1_HiddenAnimal" value="Chicken"> <br>
+        <label for="Hidden Animal">The hidden animal type </label><br />
+        <input type="password" id="form1_HiddenAnimal" value="Chicken" /> <br />
 
-        <label for="Guess Animal">Guess the animal</label>
-        <input type="text" id="form1_GuessAnimal" autofocus> <br>
+        <label for="Guess Animal">Guess the animal</label><br />
+        <input type="text" id="form1_GuessAnimal" autofocus /> <br />
 
         <input type="button" onclick="checkAnimal()" value="Check the guess">
     </form>
@@ -18,9 +18,14 @@
 
     <p id="result">Your result </p>
 
+    <div id="imageContainer">
+        <img src="image1.jpg" alt="apple_juice" onclick="selectImage()" width="150" height="150" />
+    </div>
+
     <script>
         let wrong = 0;
         let correct = 0;
+        let useImage = 1;
 
         function checkAnimal() {
             const secretAnimal = document.getElementById("form1_HiddenAnimal").value;
@@ -35,6 +40,24 @@
             }
 
             document.getElementById("result").innerHTML = `Correct guesses: ${correct}, Wrong guesses: ${wrong}`;
+        }
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.querySelector("#imageContainer img").src = "image3.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    document.querySelector("#imageContainer img").src = "image2.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    document.querySelector("#imageContainer img").src = "image1.jpg";
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
         }
     </script>
 
