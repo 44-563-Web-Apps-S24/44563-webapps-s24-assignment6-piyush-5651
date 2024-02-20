@@ -20,6 +20,19 @@
 
     <div id="result"></div>
 
+    <form>
+        <input type="radio" id="sum" name="operation" value="sum" onclick="chooseOp()">
+        <label for="sum">sum</label><br>
+
+        <input type="radio" id="multiply" name="operation" value="multiply" onclick="chooseOp()">
+        <label for="multiply">mult</label><br>
+
+        <input type="radio" id="exponent" name="operation" value="exponent" onclick="chooseOp()">
+        <label for="exponent">exp</label><br>
+    </form>
+
+    <div id="operationsResult"></div>
+
     <script>
 
         function discount() {
@@ -27,7 +40,6 @@
             let count = parseInt(document.getElementById("count").value);
             let discountPercent = parseFloat(document.getElementById("reductions").value);
 
-            console.log(price, count, discountPercent);
             let myOutput = "";
 
             for (let i = 0; i < 5; i++) {
@@ -38,6 +50,28 @@
             }
 
             document.getElementById("result").innerHTML = "Totals are: " + myOutput;
+        }
+
+        function chooseOp() {
+            let price = parseFloat(document.getElementById("price").value);
+            let discount = parseFloat(document.getElementById("reductions").value);
+
+            let operationsResult = document.getElementById("operationsResult");
+            let chosenOperation = document.querySelector('input[name="operation"]:checked').value;
+
+            if (chosenOperation === "sum") {
+                operationsResult.innerHTML = "Sum of price and discount: " + (price + discount);
+            }
+            else if (chosenOperation === "multiply") {
+                operationsResult.innerHTML = "Product of price and discount: " + (price * discount);
+            }
+            else if (chosenOperation === "exponent") {
+                operationsResult.innerHTML = "Price raised to power of discount: " + Math.pow(price, discount);
+            }
+            else {
+                operationsResult.innerHTML = "Please select a operation";
+            }
+
         }
     </script>
 
