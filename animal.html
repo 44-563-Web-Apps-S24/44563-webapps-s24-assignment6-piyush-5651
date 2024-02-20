@@ -16,7 +16,7 @@
     </form>
 
 
-    <p id="result">Your result </p>
+    <div id="result">Your result </div>
 
     <div id="imageContainer">
         <img src="image1.jpg" alt="apple_juice" onclick="selectImage()" width="150" height="150" />
@@ -40,6 +40,11 @@
             }
 
             document.getElementById("result").innerHTML = `Correct guesses: ${correct}, Wrong guesses: ${wrong}`;
+            if (wrong > correct) {
+                document.querySelector('button').onclick = function () {
+                    alert("Sorry, too many wrong guesses.");
+                };
+            }
         }
         function selectImage() {
             switch (useImage) {
